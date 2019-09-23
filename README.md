@@ -149,3 +149,30 @@ $ python3 test_charon.py
 [99] Best: fitness=0.789119, complexity=12, code="(* (+ r (+ (/ r 0.882679) r)) r)"
 ```
 
+After simplification, the formula is 3.1329146835 r^2. 
+
+The following configuration were used in the above example:
+```
+Operators allowed: +, -, *, /
+Terminal nodes  allowed: real numbers uniformly drawn from [-1,1)  and the radius r of the data
+Crossover: 0.8
+Mutation: 0.15
+Elite: 0.01
+Reproduction: 0.04
+```
+
+Moreover, a penalty term `0.001` on complexity was used. Read the code for the details.
+
+```python
+    cfg.add_terminal_const(0)
+    cfg.add_terminal_range(-1.0,1.0)
+    cfg.add_function_node("+",2,2)
+    cfg.add_function_node("-",2,2)
+    cfg.add_function_node("*",2,2)
+    cfg.add_function_node("/",2,2)
+
+    cfg.set_probability(0.80,0.15,0.01)
+    shared = area_of_disk_shared()
+    pool = gp_pool(area_of_disk(),cp=0.001,M=1000)
+    pool.generate_initial(5)
+```
