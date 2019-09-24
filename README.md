@@ -4,7 +4,7 @@ charon: Symbolic regression accelerated with CUDA
 It is my implementation of symbolic regression (genetic programming) using pycuda.
 It contains a S-expression interpreter written in both python and CUDA.
 
-Although the code could run without a GPU, it would be much faster if you have a GPU and [pycuda](https://documen.tician.de/pycuda/) installed.
+Although the code can run without a GPU, it will be much faster if you have a GPU and [pycuda](https://documen.tician.de/pycuda/) installed.
 
 To test the interpreter, run
 
